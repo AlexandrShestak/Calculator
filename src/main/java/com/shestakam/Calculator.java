@@ -6,6 +6,7 @@ package com.shestakam;
 public class Calculator {
 
     private Operands operands;
+    private Number memory;
     private String action;
 
     public Calculator() {
@@ -25,26 +26,37 @@ public class Calculator {
     }
     public Number getIndicator(){
         if(operands.isSecondOperandEntered()) {
-            if (action == "+") {
-                return operands.getOperand1() + operands.getOperand2();
-            } else if (action == "-") {
-                return operands.getOperand1() - operands.getOperand2();
-            } else if (action == "/") {
-                return operands.getOperand1() / operands.getOperand2();
-            } else if (action == "*") {
-                return operands.getOperand1() * operands.getOperand2();
+            if (action.equals("+")) {
+                Number result = operands.getOperand1() + operands.getOperand2();
+                clear();
+                return result;
+            } else if (action.equals("-")) {
+                Number result = operands.getOperand1() - operands.getOperand2();
+                clear();
+                return result;
+            } else if (action.equals("/")) {
+                Number result = operands.getOperand1() / operands.getOperand2();
+                clear();
+                return result;
+            } else if (action.equals("*")){
+                Number result = operands.getOperand1() * operands.getOperand2();
+                clear();
+                return result;
             }
         } else{
-            if (action == "+") {
-                return operands.getOperand1() + operands.getOperand1();
-            } else if (action == "-") {
-                return operands.getOperand1() - operands.getOperand1();
-            } else if (action == "/") {
-                return operands.getOperand1() / operands.getOperand1();
-            } else if (action == "*") {
-                return operands.getOperand1() * operands.getOperand1();
+            if (action.equals("+")) {
+                Number result = operands.getOperand1() + operands.getOperand1();
+                return result;
+            } else if (action.equals("-")){
+                Number result = operands.getOperand1() - operands.getOperand1();
+                return result;
+            } else if (action.equals("/")) {
+                Number result = operands.getOperand1() / operands.getOperand1();
+                return result;
+            } else if (action.equals("*")) {
+                Number result = operands.getOperand1() * operands.getOperand2();
+                return result;
             }
-
         }
 
         return 0;
@@ -53,5 +65,34 @@ public class Calculator {
     public void clear(){
         operands.clear();
         action = null;
+    }
+
+    public void memoryStore(){
+        memory = getIndicator();
+    }
+
+    public Number memoryRead(){
+        if (operands.isFirstOperandEntered()) {
+            operands.setOperand2(memory.doubleValue());
+        } else {
+            operands.setOperand1(memory.doubleValue());
+        }
+
+        return 0;
+    }
+
+    public void memoryAdd(){
+        memory = memory.doubleValue() + getIndicator().doubleValue();
+    }
+
+    public void memoryClear(){
+        memory = null;
+    }
+
+    public boolean memoryIsEmpty(){
+        if (memory == null){
+            return true;
+        }
+        return false;
     }
 }
