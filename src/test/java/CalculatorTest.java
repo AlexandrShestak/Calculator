@@ -140,7 +140,7 @@ public class CalculatorTest {
         calculator.memoryStore();
         calculator.memoryRead();
         calculator.setOperation("*");
-        Number expected = 25;
+        Number expected = 50;
         calculator.setOperation("=");
         Number actual = calculator.getIndicator();
         Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
@@ -162,4 +162,17 @@ public class CalculatorTest {
         Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
     }
 
+    @Test
+    public void testFromMatvei1() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(2);
+        calculator.setOperation("*");
+        calculator.setOperand(3);
+        calculator.setOperation("=");
+        calculator.setOperation("=");
+        Number expected = 18;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+
+    }
 }
