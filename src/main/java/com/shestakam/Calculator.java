@@ -7,11 +7,12 @@ public class Calculator {
 
     private Operands operands;
     private Number memory;
-    private String action;
+    private Action action;
 
     public Calculator() {
         operands = new Operands();
-        action = new String();
+        action = new Action();
+        memory = 0;
     }
 
     public void setOperand(Number number){
@@ -22,39 +23,57 @@ public class Calculator {
     }
 
     public void setOperation(String act){
-        action = act;
+        if ( act.equals("=")){
+            action.setEqualsAction(true);
+        }
+        else
+            action.setOperationAction(act);
+
+
     }
     public Number getIndicator(){
-        if(operands.isSecondOperandEntered()) {
-            if (action.equals("+")) {
-                Number result = operands.getOperand1() + operands.getOperand2();
-                clear();
-                return result;
-            } else if (action.equals("-")) {
-                Number result = operands.getOperand1() - operands.getOperand2();
-                clear();
-                return result;
-            } else if (action.equals("/")) {
-                Number result = operands.getOperand1() / operands.getOperand2();
-                clear();
-                return result;
-            } else if (action.equals("*")){
-                Number result = operands.getOperand1() * operands.getOperand2();
-                clear();
-                return result;
+        if ( action.getEqualsAction()) {
+            if (operands.isSecondOperandEntered()) {
+                if (action.getOperationAction().equals("+")) {
+                    Number result = operands.getOperand1() + operands.getOperand2();
+                    clear();
+                    return result;
+                } else if (action.getOperationAction().equals("-")) {
+                    Number result = operands.getOperand1() - operands.getOperand2();
+                    clear();
+                    return result;
+                } else if (action.getOperationAction().equals("/")) {
+                    Number result = operands.getOperand1() / operands.getOperand2();
+                    clear();
+                    return result;
+                } else if (action.getOperationAction().equals("*")) {
+                    Number result = operands.getOperand1() * operands.getOperand2();
+                    clear();
+                    return result;
+                }
+            } else {
+                if (action.getOperationAction().equals("+")) {
+                    Number result = operands.getOperand1() + operands.getOperand1();
+                    return result;
+                } else if (action.getOperationAction().equals("-")) {
+                    Number result = operands.getOperand1() - operands.getOperand1();
+                    return result;
+                } else if (action.getOperationAction().equals("/")) {
+                    Number result = operands.getOperand1() / operands.getOperand1();
+                    return result;
+                } else if (action.getOperationAction().equals("*")) {
+                    Number result = operands.getOperand1() * operands.getOperand1();
+                    return result;
+                }
             }
-        } else{
-            if (action.equals("+")) {
-                Number result = operands.getOperand1() + operands.getOperand1();
+        }else {
+            if (operands.isSecondOperandEntered()) {
+                Number result = operands.getOperand2();
+                clear();
                 return result;
-            } else if (action.equals("-")){
-                Number result = operands.getOperand1() - operands.getOperand1();
-                return result;
-            } else if (action.equals("/")) {
-                Number result = operands.getOperand1() / operands.getOperand1();
-                return result;
-            } else if (action.equals("*")) {
-                Number result = operands.getOperand1() * operands.getOperand2();
+            } else {
+                Number result = operands.getOperand1();
+                clear();
                 return result;
             }
         }
@@ -64,7 +83,7 @@ public class Calculator {
 
     public void clear(){
         operands.clear();
-        action = null;
+        action.clear();
     }
 
     public void memoryStore(){
