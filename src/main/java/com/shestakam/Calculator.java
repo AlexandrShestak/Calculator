@@ -29,9 +29,11 @@ public class Calculator {
 
     public void setOperand(Number number) {
         count++;
-        if (count == 2){
+        if (count >= 2){
+
             helpNumber = currentNumber;
         }
+        if (helpOperation==null)
         helpNumber = onIndicator;
         onIndicator = number;
         currentNumber = number;
@@ -58,6 +60,7 @@ public class Calculator {
         if(helpOperation != null) {
             if (act.equals("=")) {
                 operation = act;
+
                 if (helpOperation.equals("+")) {
                     operation = act;
                     if (count == 1) {
@@ -121,6 +124,7 @@ public class Calculator {
                 if(act.equals("=")) {
                     isOperationEnteredBefore = false;
                     helpOperation = operation;
+
                 }
                 operation = act;
                 if (count == 1){

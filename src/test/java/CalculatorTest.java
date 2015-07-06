@@ -247,7 +247,7 @@ public class CalculatorTest {
         calculator.setOperation("=");
         calculator.setOperand(4);
         calculator.setOperation("=");
-        Number expected = 9;
+        Number expected = 7;
         Number actual = calculator.getIndicator();
         Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
 
