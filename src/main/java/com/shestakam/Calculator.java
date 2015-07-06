@@ -32,6 +32,7 @@ public class Calculator {
         if (count == 2){
             helpNumber = currentNumber;
         }
+        helpNumber = onIndicator;
         onIndicator = number;
         currentNumber = number;
 

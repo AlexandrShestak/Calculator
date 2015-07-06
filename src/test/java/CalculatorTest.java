@@ -170,9 +170,93 @@ public class CalculatorTest {
         calculator.setOperand(3);
         calculator.setOperation("=");
         calculator.setOperation("=");
-        Number expected = 18;
+        calculator.setOperation("=");
+        Number expected = 54;
         Number actual = calculator.getIndicator();
         Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
 
     }
+
+    @Test
+    public void testFromMatvei2() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(2);
+        calculator.setOperation("+");
+        calculator.setOperand(3);
+        calculator.setOperation("/");
+        calculator.setOperand(5);
+        Number expected = 5;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+
+    }
+
+    @Test
+    public void testFromMatvei3() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(2);
+        calculator.setOperation("+");
+        calculator.setOperand(3);
+        calculator.setOperation("/");
+        calculator.setOperand(5);
+        calculator.setOperation("=");
+        Number expected = 1;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+
+    }
+
+    @Test
+    public void testFromMatvei4() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(2);
+        calculator.setOperation("+");
+        calculator.setOperand(3);
+        calculator.setOperation("=");
+        calculator.setOperand(2);
+        calculator.setOperation("+");
+        calculator.setOperand(3);
+        calculator.setOperation("=");
+        Number expected = 5;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+
+    }
+
+
+    @Test
+    public void testFromMatvei5() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(3);
+        calculator.setOperation("+");
+        calculator.setOperand(3);
+        calculator.setOperation("=");
+
+        Number expected = 6;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+
+    }
+
+    @Test
+    public void testFromMatvei6() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(2);
+        calculator.setOperation("+");
+        calculator.setOperand(3);
+        calculator.setOperation("=");
+        calculator.setOperand(4);
+        calculator.setOperation("=");
+        Number expected = 9;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+
+    }
+
+
+
+
+
+
+
 }
