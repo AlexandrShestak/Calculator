@@ -253,6 +253,27 @@ public class CalculatorTest {
 
     }
 
+    @Test
+    public void testBigTest() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(2);
+        calculator.setOperation("+");
+        calculator.setOperand(3);
+        calculator.setOperation("*");
+        calculator.setOperand(5);
+        calculator.setOperation("-");
+        calculator.setOperand(7);
+        calculator.setOperation("/");
+        calculator.setOperand(2);
+        calculator.setOperation("=");
+        Number expected = 9;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+
+    }
+
+
+
 
 
 

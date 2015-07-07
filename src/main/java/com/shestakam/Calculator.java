@@ -5,53 +5,33 @@ package com.shestakam;
  */
 public class Calculator {
 
-    private Operands operands;
     private Number memory;
-    private Action action;
     private boolean isOperationEnteredBefore;
-   // private Number helpNumber;
     private Number onIndicator;
     private Number currentNumber;
     private Number helpNumber;
-    private int count;
+    private int countOperands;
     private String operation;
     private String helpOperation;
 
     public Calculator() {
         operation = new String();
-        count = 0;
-        operands = new Operands();
-        action = new Action();
+        countOperands = 0;
         memory = 0;
         helpOperation = null;
         helpNumber = 0;
     }
 
     public void setOperand(Number number) {
-        count++;
-        if (count >= 2){
-
+        countOperands++;
+        if (countOperands >= 2){
             helpNumber = currentNumber;
         }
         if (helpOperation==null)
-        helpNumber = onIndicator;
+            helpNumber = onIndicator;
         onIndicator = number;
         currentNumber = number;
 
-     /*   if (operands.isFirstOperandEntered() & operands.isSecondOperandEntered()){
-            Number temp = operands.getOperand2();
-            operands.setOperand1(temp.doubleValue());
-            operands.setOperand2(number.doubleValue());
-            return;
-        }
-        if (operands.isFirstOperandEntered() & !operands.isSecondOperandEntered()){
-            operands.setOperand2(number.doubleValue());
-            return;
-        }
-        if (!operands.isFirstOperandEntered() & !operands.isSecondOperandEntered()) {
-            operands.setOperand1(number.doubleValue());
-
-        }*/
     }
 
 
@@ -62,56 +42,24 @@ public class Calculator {
                 operation = act;
 
                 if (helpOperation.equals("+")) {
-                    operation = act;
-                    if (count == 1) {
-                        Number result = currentNumber.doubleValue() + onIndicator.doubleValue();
-                        onIndicator = result;
-                        return;
-                    } else {
-                        Number result = currentNumber.doubleValue() + helpNumber.doubleValue();
-                        onIndicator = result;
-                        count--;
-                        return;
-                    }
+                    performPlusOperation(act);
+                    helpOperation = "+";
+                    return;
                 }
                 if (helpOperation.equals("-")) {
-                    operation = act;
-                    if (count == 1) {
-                        Number result = onIndicator.doubleValue() - currentNumber.doubleValue();
-                        onIndicator = result;
-                        return;
-                    } else {
-                        Number result = helpNumber.doubleValue() - currentNumber.doubleValue();
-                        onIndicator = result;
-                        count--;
-                        return;
-                    }
+                    performMinusOperation(act);
+                    helpOperation = "-";
+                    return;
                 }
                 if (helpOperation.equals("*")) {
-                    operation = act;
-                    if (count == 1) {
-                        Number result = onIndicator.doubleValue() * currentNumber.doubleValue();
-                        onIndicator = result;
-                        return;
-                    } else {
-                        Number result = helpNumber.doubleValue() * currentNumber.doubleValue();
-                        onIndicator = result;
-                        count--;
-                        return;
-                    }
+                    performMultiplyOperation(act);
+                    helpOperation = "*";
+                    return;
                 }
                 if (helpOperation.equals("/")) {
-                    operation = act;
-                    if (count == 1) {
-                        Number result = onIndicator.doubleValue() / currentNumber.doubleValue();
-                        onIndicator = result;
-                        return;
-                    } else {
-                        Number result = helpNumber.doubleValue() / currentNumber.doubleValue();
-                        onIndicator = result;
-                        count--;
-                        return;
-                    }
+                    performDivisionOperation(act);
+                    helpOperation = "/";
+                    return;
                 }
             }
             else
@@ -120,220 +68,61 @@ public class Calculator {
 
 
         if (isOperationEnteredBefore){
-            if (operation.equals("+")){
-                if(act.equals("=")) {
-                    isOperationEnteredBefore = false;
-                    helpOperation = operation;
 
-                }
-                operation = act;
-                if (count == 1){
-                    Number result = currentNumber.doubleValue() + onIndicator.doubleValue();
-                    onIndicator = result;
-                    return;
-                }else{
-                    Number result = currentNumber.doubleValue() + helpNumber.doubleValue();
-                    onIndicator = result;
-                    count--;
-                    return;
-                }
+            if (operation.equals("+")){
+                performPlusOperation(act);
+                return;
             }
             if (operation.equals("-")){
-                if(act.equals("=")) {
-                    isOperationEnteredBefore = false;
-                    helpOperation = operation;
-                }
-                operation = act;
-                if (count == 1){
-                    Number result =  onIndicator.doubleValue() - currentNumber.doubleValue();
-                    onIndicator = result;
-                    return;
-                }else{
-                    Number result = helpNumber.doubleValue() - currentNumber.doubleValue() ;
-                    onIndicator = result;
-                    count--;
-                    return;
-                }
+                performMinusOperation(act);
+                return;
             }
             if (operation.equals("*")){
-                if(act.equals("=")) {
-                    isOperationEnteredBefore = false;
-                    helpOperation = operation;
-                }
-                operation = act;
-                if (count == 1){
-                    Number result =  onIndicator.doubleValue() * currentNumber.doubleValue();
-                    onIndicator = result;
-                    return;
-                }else{
-                    Number result = helpNumber.doubleValue() * currentNumber.doubleValue() ;
-                    onIndicator = result;
-                    count--;
-                    return;
-                }
+                performMultiplyOperation(act);
+                return;
             }
             if (operation.equals("/")){
-                if(act.equals("=")) {
-                    isOperationEnteredBefore = false;
-                    helpOperation = operation;
-                }
-                operation = act;
-                if (count == 1){
-                    Number result =  onIndicator.doubleValue() / currentNumber.doubleValue();
-                    onIndicator = result;
-                    return;
-                }else{
-                    Number result = helpNumber.doubleValue() / currentNumber.doubleValue() ;
-                    onIndicator = result;
-                    count--;
-                    return;
-                }
+                performDivisionOperation(act);
+                return;
             }
             if (act.equals("=")){
                 isOperationEnteredBefore = false;
-                //helpOperation = operation;
                 if (operation.equals("+")){
-                    operation = act;
-                    if (count == 1){
-                        Number result = currentNumber.doubleValue() + onIndicator.doubleValue();
-                        onIndicator = result;
-                        return;
-                    }else{
-                        Number result = currentNumber.doubleValue() + helpNumber.doubleValue();
-                        onIndicator = result;
-                        count--;
-                        return;
-                    }
+                    performPlusOperation(act);
+                    return;
                 }
                 if (operation.equals("-")){
-                    operation = act;
-                    if (count == 1){
-                        Number result =  onIndicator.doubleValue() - currentNumber.doubleValue();
-                        onIndicator = result;
-                        return;
-                    }else{
-                        Number result = helpNumber.doubleValue() - currentNumber.doubleValue() ;
-                        onIndicator = result;
-                        count--;
-                        return;
-                    }
+                    performMinusOperation(act);
+                    return;
                 }
                 if (operation.equals("*")){
-                    operation = act;
-                    if (count == 1){
-                        Number result =  onIndicator.doubleValue() * currentNumber.doubleValue();
-                        onIndicator = result;
-                        return;
-                    }else{
-                        Number result = helpNumber.doubleValue() * currentNumber.doubleValue() ;
-                        onIndicator = result;
-                        count--;
-                        return;
-                    }
+                    performMultiplyOperation(act);
+                    return;
                 }
                 if (operation.equals("/")){
-                    operation = act;
-                    if (count == 1){
-                        Number result =  onIndicator.doubleValue() / currentNumber.doubleValue();
-                        onIndicator = result;
-                        return;
-                    }else{
-                        Number result = helpNumber.doubleValue() / currentNumber.doubleValue() ;
-                        onIndicator = result;
-                        count--;
-                        return;
-                    }
+                    performDivisionOperation(act);
+                    return;
                 }
-              /*  if (operation.equals("=")){
-                    operation = act;
-                    if (helpOperation.equals("+")){
-                        operation = act;
-                        if (count == 1){
-                            Number result = currentNumber.doubleValue() + onIndicator.doubleValue();
-                            onIndicator = result;
-                            return;
-                        }else{
-                            Number result = currentNumber.doubleValue() + helpNumber.doubleValue();
-                            onIndicator = result;
-                            count--;
-                            return;
-                        }
-                    }
-                    if (helpOperation.equals("-")){
-                        operation = act;
-                        if (count == 1){
-                            Number result =  onIndicator.doubleValue() - currentNumber.doubleValue();
-                            onIndicator = result;
-                            return;
-                        }else{
-                            Number result = helpNumber.doubleValue() - currentNumber.doubleValue() ;
-                            onIndicator = result;
-                            count--;
-                            return;
-                        }
-                    }
-                    if (helpOperation.equals("*")){
-                        operation = act;
-                        if (count == 1){
-                            Number result =  onIndicator.doubleValue() * currentNumber.doubleValue();
-                            onIndicator = result;
-                            return;
-                        }else{
-                            Number result = helpNumber.doubleValue() * currentNumber.doubleValue() ;
-                            onIndicator = result;
-                            count--;
-                            return;
-                        }
-                    }
-                    if (helpOperation.equals("/")){
-                        operation = act;
-                        if (count == 1){
-                            Number result =  onIndicator.doubleValue() / currentNumber.doubleValue();
-                            onIndicator = result;
-                            return;
-                        }else{
-                            Number result = helpNumber.doubleValue() / currentNumber.doubleValue() ;
-                            onIndicator = result;
-                            count--;
-                            return;
-                        }
-                    }
-                }
-*/
             }
-
-
-
-
         } else{
             operation = act;
             isOperationEnteredBefore = true;
         }
 
-
-
     }
+
+
     public Number getIndicator(){
         return onIndicator;
     }
 
-    public void clear(){
-        operands.clear();
-        action.clear();
-    }
 
     public void memoryStore(){
         memory = getIndicator();
     }
 
     public Number memoryRead(){
-        /*if (operands.isFirstOperandEntered()) {
-            operands.setOperand2(memory.doubleValue());
-        } else {
-            operands.setOperand1(memory.doubleValue());
-        }*/
         currentNumber = memory;
-
         return 0;
     }
 
@@ -351,4 +140,79 @@ public class Calculator {
         }
         return false;
     }
+
+    private void performPlusOperation(String currentOperation){
+        if(currentOperation.equals("=")) {
+            isOperationEnteredBefore = false;
+            helpOperation = operation;
+
+        }
+        operation = currentOperation;
+        if (countOperands == 1){
+            Number result = currentNumber.doubleValue() + onIndicator.doubleValue();
+            onIndicator = result;
+            return;
+        }else{
+            Number result = currentNumber.doubleValue() + helpNumber.doubleValue();
+            onIndicator = result;
+            countOperands--;
+            return;
+        }
+    }
+
+    private void performMinusOperation(String currentOperation){
+        if(currentOperation.equals("=")) {
+            isOperationEnteredBefore = false;
+            helpOperation = operation;
+        }
+        operation = currentOperation;
+        if (countOperands == 1){
+            Number result =  onIndicator.doubleValue() - currentNumber.doubleValue();
+            onIndicator = result;
+            return;
+        }else{
+            Number result = helpNumber.doubleValue() - currentNumber.doubleValue() ;
+            onIndicator = result;
+            countOperands--;
+            return;
+        }
+    }
+
+    private void performMultiplyOperation(String currentOperation){
+        if(currentOperation.equals("=")) {
+            isOperationEnteredBefore = false;
+            helpOperation = operation;
+        }
+        operation = currentOperation;
+        if (countOperands == 1){
+            Number result =  onIndicator.doubleValue() * currentNumber.doubleValue();
+            onIndicator = result;
+            return;
+        }else{
+            Number result = helpNumber.doubleValue() * currentNumber.doubleValue() ;
+            onIndicator = result;
+            countOperands--;
+            return;
+        }
+    }
+
+    private void performDivisionOperation(String currentOperation){
+        if(currentOperation.equals("=")) {
+            isOperationEnteredBefore = false;
+            helpOperation = operation;
+        }
+        operation = currentOperation;
+        if (countOperands == 1){
+            Number result =  onIndicator.doubleValue() / currentNumber.doubleValue();
+            onIndicator = result;
+            return;
+        }else{
+            Number result = helpNumber.doubleValue() / currentNumber.doubleValue() ;
+            onIndicator = result;
+            countOperands--;
+            return;
+        }
+    }
+
+
 }
