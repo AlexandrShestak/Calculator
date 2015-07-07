@@ -31,7 +31,6 @@ public class Calculator {
             helpNumber = onIndicator;
         onIndicator = number;
         currentNumber = number;
-
     }
 
 
@@ -40,75 +39,28 @@ public class Calculator {
         if(helpOperation != null) {
             if (act.equals("=")) {
                 operation = act;
-
-                if (helpOperation.equals("+")) {
-                    performPlusOperation(act);
-                    helpOperation = "+";
-                    return;
-                }
-                if (helpOperation.equals("-")) {
-                    performMinusOperation(act);
-                    helpOperation = "-";
-                    return;
-                }
-                if (helpOperation.equals("*")) {
-                    performMultiplyOperation(act);
-                    helpOperation = "*";
-                    return;
-                }
-                if (helpOperation.equals("/")) {
-                    performDivisionOperation(act);
-                    helpOperation = "/";
-                    return;
-                }
+                String tempOperation = new String(helpOperation);
+                performOperation(helpOperation, act);
+                helpOperation = tempOperation;
+                return;
             }
             else
                 helpOperation = null;
         }
-
-
         if (isOperationEnteredBefore){
+            if (!act.equals("=")) {
+                performOperation(operation, act);
+                return;
 
-            if (operation.equals("+")){
-                performPlusOperation(act);
-                return;
-            }
-            if (operation.equals("-")){
-                performMinusOperation(act);
-                return;
-            }
-            if (operation.equals("*")){
-                performMultiplyOperation(act);
-                return;
-            }
-            if (operation.equals("/")){
-                performDivisionOperation(act);
-                return;
-            }
-            if (act.equals("=")){
+            } else  {
                 isOperationEnteredBefore = false;
-                if (operation.equals("+")){
-                    performPlusOperation(act);
-                    return;
-                }
-                if (operation.equals("-")){
-                    performMinusOperation(act);
-                    return;
-                }
-                if (operation.equals("*")){
-                    performMultiplyOperation(act);
-                    return;
-                }
-                if (operation.equals("/")){
-                    performDivisionOperation(act);
-                    return;
-                }
+                performOperation(operation, act);
+                return;
             }
         } else{
             operation = act;
             isOperationEnteredBefore = true;
         }
-
     }
 
 
@@ -141,73 +93,46 @@ public class Calculator {
         return false;
     }
 
-    private void performPlusOperation(String currentOperation){
-        if(currentOperation.equals("=")) {
-            isOperationEnteredBefore = false;
-            helpOperation = operation;
-
-        }
-        operation = currentOperation;
-        if (countOperands == 1){
-            Number result = currentNumber.doubleValue() + onIndicator.doubleValue();
-            onIndicator = result;
-            return;
-        }else{
-            Number result = currentNumber.doubleValue() + helpNumber.doubleValue();
-            onIndicator = result;
-            countOperands--;
-            return;
-        }
-    }
-
-    private void performMinusOperation(String currentOperation){
+    private void performOperation(String previousOperation, String currentOperation){
         if(currentOperation.equals("=")) {
             isOperationEnteredBefore = false;
             helpOperation = operation;
         }
         operation = currentOperation;
         if (countOperands == 1){
-            Number result =  onIndicator.doubleValue() - currentNumber.doubleValue();
+            Number result = null;
+            switch(previousOperation){
+                case "+":
+                    result =  onIndicator.doubleValue() + currentNumber.doubleValue();
+                    break;
+                case "-":
+                    result =  onIndicator.doubleValue() - currentNumber.doubleValue();
+                    break;
+                case "*":
+                    result =  onIndicator.doubleValue() * currentNumber.doubleValue();
+                    break;
+                case "/":
+                    result =  onIndicator.doubleValue() / currentNumber.doubleValue();
+                    break;
+            }
             onIndicator = result;
             return;
         }else{
-            Number result = helpNumber.doubleValue() - currentNumber.doubleValue() ;
-            onIndicator = result;
-            countOperands--;
-            return;
-        }
-    }
-
-    private void performMultiplyOperation(String currentOperation){
-        if(currentOperation.equals("=")) {
-            isOperationEnteredBefore = false;
-            helpOperation = operation;
-        }
-        operation = currentOperation;
-        if (countOperands == 1){
-            Number result =  onIndicator.doubleValue() * currentNumber.doubleValue();
-            onIndicator = result;
-            return;
-        }else{
-            Number result = helpNumber.doubleValue() * currentNumber.doubleValue() ;
-            onIndicator = result;
-            countOperands--;
-            return;
-        }
-    }
-
-    private void performDivisionOperation(String currentOperation){
-        if(currentOperation.equals("=")) {
-            isOperationEnteredBefore = false;
-            helpOperation = operation;
-        }
-        operation = currentOperation;
-        if (countOperands == 1){
-            Number result =  onIndicator.doubleValue() / currentNumber.doubleValue();
-            onIndicator = result;
-            return;
-        }else{
-            Number result = helpNumber.doubleValue() / currentNumber.doubleValue() ;
+            Number result = null;
+            switch(previousOperation){
+                case "+":
+                    result =  helpNumber.doubleValue() + currentNumber.doubleValue() ;
+                    break;
+                case "-":
+                    result =  helpNumber.doubleValue() - currentNumber.doubleValue() ;
+                    break;
+                case "*":
+                    result =  helpNumber.doubleValue() * currentNumber.doubleValue() ;
+                    break;
+                case "/":
+                    result =  helpNumber.doubleValue() / currentNumber.doubleValue() ;
+                    break;
+            }
             onIndicator = result;
             countOperands--;
             return;
