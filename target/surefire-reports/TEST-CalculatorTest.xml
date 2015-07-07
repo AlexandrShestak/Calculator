@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="CalculatorTest" time="0.425" errors="0" skipped="0">
+<testsuite tests="19" failures="0" name="CalculatorTest" time="0.15" errors="0" skipped="0">
   <properties>
-    <property name="idea.version" value="14.0.1"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
     <property name="java.vm.version" value="25.25-b02"/>
@@ -11,7 +10,6 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="idea.launcher.port" value="7534"/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
@@ -28,7 +26,7 @@
     <property name="os.name" value="Linux"/>
     <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/home/alexandr/idea-IU-139.225.3/bin::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.library.path" value="/u01/app/oracle/product/11.2.0/xe/lib:/home/alexandr/idea-IU-139.225.3/bin::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -36,15 +34,14 @@
     <property name="user.home" value="/home/alexandr"/>
     <property name="user.timezone" value="Europe/Minsk"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
-    <property name="java.specification.version" value="1.8"/>
-    <property name="idea.launcher.bin.path" value="/home/alexandr/idea-IU-139.225.3/bin"/>
     <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="1.8"/>
     <property name="user.name" value="alexandr"/>
-    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar:/home/alexandr/idea-IU-139.225.3/lib/idea_rt.jar"/>
+    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
-    <property name="sun.java.command" value="com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=14.0.1 install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -65,6 +62,20 @@
   <testcase classname="CalculatorTest" name="testOperation1" time="0.005"/>
   <testcase classname="CalculatorTest" name="testOperation2" time="0"/>
   <testcase classname="CalculatorTest" name="testOperation3" time="0"/>
-  <testcase classname="CalculatorTest" name="testOperation4" time="0.002"/>
+  <testcase classname="CalculatorTest" name="testOperation4" time="0"/>
   <testcase classname="CalculatorTest" name="testOperation5" time="0"/>
+  <testcase classname="CalculatorTest" name="testBigTest" time="0"/>
+  <testcase classname="CalculatorTest" name="testFromMatvei1" time="0"/>
+  <testcase classname="CalculatorTest" name="testFromMatvei2" time="0"/>
+  <testcase classname="CalculatorTest" name="testFromMatvei3" time="0"/>
+  <testcase classname="CalculatorTest" name="testFromMatvei4" time="0"/>
+  <testcase classname="CalculatorTest" name="testFromMatvei5" time="0"/>
+  <testcase classname="CalculatorTest" name="testFromMatvei6" time="0"/>
+  <testcase classname="CalculatorTest" name="memoryTest_2" time="0"/>
+  <testcase classname="CalculatorTest" name="testOperation1_2" time="0"/>
+  <testcase classname="CalculatorTest" name="testOperation2_2" time="0"/>
+  <testcase classname="CalculatorTest" name="testOperation3_2" time="0"/>
+  <testcase classname="CalculatorTest" name="testOperation4_2" time="0"/>
+  <testcase classname="CalculatorTest" name="testOperation5_2" time="0.001"/>
+  <testcase classname="CalculatorTest" name="memoryTest" time="0"/>
 </testsuite>
