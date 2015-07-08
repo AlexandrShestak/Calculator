@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6d963a6-7155-4818-b141-c809e1d8e89d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/shestakam/Calculator.java" afterPath="$PROJECT_DIR$/src/main/java/com/shestakam/Calculator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/CalculatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/CalculatorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Calculator.iws" />
@@ -47,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Calculator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Calculator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/shestakam/Calculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="336" max-vertical-offset="2538">
-              <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.6571429" vertical-offset="2010" max-vertical-offset="2430">
+              <caret line="135" column="5" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -107,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CalculatorTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CalculatorTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/CalculatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3" vertical-offset="3240" max-vertical-offset="3960">
-              <caret line="187" column="42" selection-start-line="187" selection-start-column="42" selection-end-line="187" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3024" max-vertical-offset="3474">
+              <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,8 +128,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/shestakam/Operands.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/shestakam/Action.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/shestakam/Calculator.java" />
         <option value="$PROJECT_DIR$/src/test/java/CalculatorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/shestakam/Calculator.java" />
       </list>
     </option>
   </component>
@@ -729,16 +726,16 @@
       <workItem from="1436260914076" duration="4016000" />
       <workItem from="1436301674728" duration="508000" />
       <workItem from="1436302194298" duration="862000" />
-      <workItem from="1436348835902" duration="1506000" />
+      <workItem from="1436348835902" duration="1763000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36109000" />
+    <option name="totallyTimeSpent" value="36366000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="61" y="24" width="1305" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -750,7 +747,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32935917" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32935917" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24980843" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -790,42 +787,24 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/CalculatorTest.java</url>
-          <line>82</line>
+          <line>73</line>
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/CalculatorTest.java</url>
-          <line>112</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/CalculatorTest.java</url>
-          <line>93</line>
+          <line>84</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/CalculatorTest.java</url>
-          <line>109</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/CalculatorTest.java</url>
-          <line>113</line>
-          <properties />
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/CalculatorTest.java</url>
-          <line>139</line>
+          <line>128</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
@@ -1251,21 +1230,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/shestakam/Calculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="336" max-vertical-offset="2538">
-          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/CalculatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3" vertical-offset="3240" max-vertical-offset="3960">
-          <caret line="187" column="42" selection-start-line="187" selection-start-column="42" selection-end-line="187" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3024" max-vertical-offset="3474">
+          <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shestakam/Calculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6571429" vertical-offset="2010" max-vertical-offset="2430">
+          <caret line="135" column="5" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
