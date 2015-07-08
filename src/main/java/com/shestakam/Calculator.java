@@ -33,9 +33,7 @@ public class Calculator {
         currentNumber = number;
     }
 
-
-
-    public void setOperation(String act){
+    public void callOperation(String act){
         if(helpOperation != null) {
             if (act.equals("=")) {
                 operation = act;
@@ -63,11 +61,9 @@ public class Calculator {
         }
     }
 
-
     public Number getIndicator(){
         return onIndicator;
     }
-
 
     public void memoryStore(){
         memory = getIndicator();
@@ -138,6 +134,4 @@ public class Calculator {
             return;
         }
     }
-
-
 }
