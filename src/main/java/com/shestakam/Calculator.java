@@ -14,7 +14,7 @@ public class Calculator {
     private int countOperands;
     private String operation;
     private String helpOperation;
-    private boolean forStrangeTest;
+    private boolean isOperandSendJustNow;
 
     public Calculator() {
         operation = new String();
@@ -23,11 +23,11 @@ public class Calculator {
         helpOperation = null;
         previousNumber = 0;
         helpNumberToEquals = 0;
-        forStrangeTest = false;
+        isOperandSendJustNow = false;
     }
 
     public void setOperand(Number number) {
-        forStrangeTest = true;
+        isOperandSendJustNow = true;
         countOperands++;
         if (countOperands >= 2){
             previousNumber = currentNumber;
@@ -44,50 +44,45 @@ public class Calculator {
             if (!act.equals("=")) {
 
                 if(!operation.equals("=")){
-                    if (!forStrangeTest)
+                    if (!isOperandSendJustNow)
                         countOperands = 1;
                     performOperation(operation,currentNumber,previousNumber);
                     operation = act;
 
-                    forStrangeTest = false;
+                    isOperandSendJustNow = false;
                     return;
                 }else{
                     operation = act;
-                    /*if (!forStrangeTest)
-                        countOperands = 1;*/
                     currentNumber = onIndicator;
-                    forStrangeTest = false;
+                    isOperandSendJustNow = false;
                     return;
                 }
 
-            } else  {  // это если пришло =
-
-
+            } else  {
 
                 if (!operation.equals("=")) {
                     helpOperation = operation;
-                    if (!forStrangeTest)
+                    if (!isOperandSendJustNow)
                         countOperands = 1;
                     performOperation(operation, currentNumber,previousNumber);
                     operation = act;
-                    forStrangeTest = false;
+                    isOperandSendJustNow = false;
                     return;
                 }else{ // =   =
-                    if(forStrangeTest)
+                    if(isOperandSendJustNow)
                         performOperation(helpOperation,previousNumber,onIndicator);
                     else
                         performOperation(helpOperation, currentNumber,onIndicator);
 
-                    //performOperation(helpOperation, currentNumber,onIndicator);
                     operation = act;
-                    forStrangeTest = false;
+                    isOperandSendJustNow = false;
                     return;
                 }
             }
         } else{
             operation = act;
             isOperationEnteredBefore = true;
-            forStrangeTest = false;
+            isOperandSendJustNow = false;
         }
     }
 
@@ -101,7 +96,7 @@ public class Calculator {
     }
 
     public Number memoryRead(){
-        forStrangeTest = true;
+        isOperandSendJustNow = true;
         previousNumber = currentNumber;
         onIndicator = memory;
         currentNumber = memory;
