@@ -71,14 +71,20 @@ public class CalculatorTest {
         calculator.setOperand(15);
         calculator.callOperation("-");
         calculator.setOperand(5);
+        calculator.callOperation("=");
+        calculator.callOperation("*");
+        calculator.callOperation("=");
         calculator.memoryStore();
+        calculator.setOperand(2);
         calculator.memoryRead();
         calculator.callOperation("*");
-        Number expected = 50;
+        calculator.setOperand(2);
         calculator.callOperation("=");
+        Number expected = 200;
         Number actual = calculator.getIndicator();
         Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
     }
+
 
     @Test
     public void testMemoryReadStoreMultiplyOnYourselfOperations(){
@@ -88,6 +94,9 @@ public class CalculatorTest {
         calculator.setOperand(5);
         calculator.callOperation("=");
         calculator.memoryStore();
+        calculator.setOperand(1);
+        calculator.setOperand(1);
+        calculator.setOperand(1);
         calculator.memoryRead();
         calculator.callOperation("*");
         Number expected = 100;

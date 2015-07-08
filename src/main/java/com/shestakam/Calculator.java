@@ -9,55 +9,85 @@ public class Calculator {
     private boolean isOperationEnteredBefore;
     private Number onIndicator;
     private Number currentNumber;
-    private Number helpNumber;
+    private Number previousNumber;
+    private Number helpNumberToEquals;
     private int countOperands;
     private String operation;
     private String helpOperation;
+    private boolean forStrangeTest;
 
     public Calculator() {
         operation = new String();
         countOperands = 0;
         memory = 0;
         helpOperation = null;
-        helpNumber = 0;
+        previousNumber = 0;
+        helpNumberToEquals = 0;
+        forStrangeTest = false;
     }
 
     public void setOperand(Number number) {
+        forStrangeTest = true;
         countOperands++;
         if (countOperands >= 2){
-            helpNumber = currentNumber;
+            previousNumber = currentNumber;
         }
         if (helpOperation==null)
-            helpNumber = onIndicator;
+            previousNumber = onIndicator;
         onIndicator = number;
         currentNumber = number;
     }
 
     public void callOperation(String act){
-        if(helpOperation != null) {
-            if (act.equals("=")) {
-                operation = act;
-                String tempOperation = new String(helpOperation);
-                performOperation(helpOperation, act);
-                helpOperation = tempOperation;
-                return;
-            }
-            else
-                helpOperation = null;
-        }
+
         if (isOperationEnteredBefore){
             if (!act.equals("=")) {
-                performOperation(operation, act);
-                return;
 
-            } else  {
-                isOperationEnteredBefore = false;
-                performOperation(operation, act);
-                return;
+                if(!operation.equals("=")){
+                    if (!forStrangeTest)
+                        countOperands = 1;
+                    performOperation(operation,currentNumber,previousNumber);
+                    operation = act;
+
+                    forStrangeTest = false;
+                    return;
+                }else{
+                    operation = act;
+                    /*if (!forStrangeTest)
+                        countOperands = 1;*/
+                    currentNumber = onIndicator;
+                    forStrangeTest = false;
+                    return;
+                }
+
+            } else  {  // это если пришло =
+
+
+
+                if (!operation.equals("=")) {
+                    helpOperation = operation;
+                    if (!forStrangeTest)
+                        countOperands = 1;
+                    performOperation(operation, currentNumber,previousNumber);
+                    operation = act;
+                    forStrangeTest = false;
+                    return;
+                }else{ // =   =
+                    if(forStrangeTest)
+                        performOperation(helpOperation,previousNumber,onIndicator);
+                    else
+                        performOperation(helpOperation, currentNumber,onIndicator);
+
+                    //performOperation(helpOperation, currentNumber,onIndicator);
+                    operation = act;
+                    forStrangeTest = false;
+                    return;
+                }
             }
         } else{
             operation = act;
             isOperationEnteredBefore = true;
+            forStrangeTest = false;
         }
     }
 
@@ -66,10 +96,14 @@ public class Calculator {
     }
 
     public void memoryStore(){
+        countOperands++;
         memory = getIndicator();
     }
 
     public Number memoryRead(){
+        forStrangeTest = true;
+        previousNumber = currentNumber;
+        onIndicator = memory;
         currentNumber = memory;
         return 0;
     }
@@ -89,49 +123,42 @@ public class Calculator {
         return false;
     }
 
-    private void performOperation(String previousOperation, String currentOperation){
-        if(currentOperation.equals("=")) {
-            isOperationEnteredBefore = false;
-            helpOperation = operation;
-        }
-        operation = currentOperation;
+    private void performOperation(String operation, Number operand1,Number operand2){
         if (countOperands == 1){
             Number result = null;
-            switch(previousOperation){
+            switch(operation){
                 case "+":
-                    result =  onIndicator.doubleValue() + currentNumber.doubleValue();
+                    result =  operand1.doubleValue() + operand1.doubleValue();
                     break;
                 case "-":
-                    result =  onIndicator.doubleValue() - currentNumber.doubleValue();
+                    result =  operand1.doubleValue() - operand1.doubleValue();
                     break;
                 case "*":
-                    result =  onIndicator.doubleValue() * currentNumber.doubleValue();
+                    result =  operand1.doubleValue() * operand1.doubleValue();
                     break;
                 case "/":
-                    result =  onIndicator.doubleValue() / currentNumber.doubleValue();
+                    result =  operand1.doubleValue() / operand1.doubleValue();
                     break;
             }
             onIndicator = result;
             return;
         }else{
             Number result = null;
-            switch(previousOperation){
+            switch(operation){
                 case "+":
-                    result =  helpNumber.doubleValue() + currentNumber.doubleValue() ;
+                    result =  operand2.doubleValue() + operand1.doubleValue();
                     break;
                 case "-":
-                    result =  helpNumber.doubleValue() - currentNumber.doubleValue() ;
+                    result =  operand2.doubleValue() - operand1.doubleValue();
                     break;
                 case "*":
-                    result =  helpNumber.doubleValue() * currentNumber.doubleValue() ;
+                    result =  operand2.doubleValue() * operand1.doubleValue();
                     break;
                 case "/":
-                    result =  helpNumber.doubleValue() / currentNumber.doubleValue() ;
+                    result =  operand2.doubleValue() / operand1.doubleValue();
                     break;
             }
             onIndicator = result;
-            countOperands--;
-            return;
         }
     }
 }
