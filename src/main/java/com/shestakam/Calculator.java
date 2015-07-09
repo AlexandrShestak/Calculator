@@ -44,11 +44,14 @@ public class Calculator {
             if (!act.equals("=")) {
 
                 if(!operation.equals("=")){
-                    if (!isOperandSendJustNow)
+                    if (!isOperandSendJustNow) {
+                        operation = act;
                         countOperands = 1;
+                        isOperandSendJustNow = false;
+                        return;
+                    }
                     performOperation(operation,currentNumber,previousNumber);
                     operation = act;
-
                     isOperandSendJustNow = false;
                     return;
                 }else{

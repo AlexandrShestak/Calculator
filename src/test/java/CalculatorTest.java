@@ -193,4 +193,47 @@ public class CalculatorTest {
         Number actual = calculator.getIndicator();
         Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
     }
+
+    @Test
+    public void testManyOperations() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(2);
+        calculator.callOperation("+");
+        calculator.callOperation("-");
+        calculator.callOperation("/");
+        calculator.callOperation("*");
+        Number expected = 2;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+
+    }
+
+    @Test
+    public void testManyOperations2() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(2);
+        calculator.callOperation("+");
+        calculator.setOperand(3);
+        calculator.callOperation("=");
+        calculator.callOperation("*");
+        calculator.setOperand(2);
+        calculator.callOperation("=");
+        Number expected = 10;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+
+    }
+
+    @Test
+    public void testDivOnZero() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(2);
+        calculator.callOperation("/");
+        calculator.setOperand(0);
+        calculator.callOperation("=");
+        Number expected = Double.POSITIVE_INFINITY;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+
+    }
 }
