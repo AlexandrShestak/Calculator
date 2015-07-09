@@ -234,6 +234,34 @@ public class CalculatorTest {
         Number expected = Double.POSITIVE_INFINITY;
         Number actual = calculator.getIndicator();
         Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
-
     }
+
+    @Test
+    public void testClearMemory() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(2);
+        calculator.memoryStore();
+        calculator.setOperand(3);
+        calculator.memoryRead();
+        calculator.memoryClear();
+        calculator.memoryRead();
+        Number expected = 0;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+    }
+
+    @Test
+    public void testMemoryAdd() throws Exception {
+        Calculator calculator = new Calculator();
+        calculator.setOperand(2);
+        calculator.memoryStore();
+        calculator.setOperand(3);
+        calculator.memoryAdd();
+        calculator.memoryRead();
+        Number expected = 5;
+        Number actual = calculator.getIndicator();
+        Assert.assertEquals(expected.doubleValue(),actual.doubleValue(),0.01);
+    }
+
+
 }

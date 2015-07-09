@@ -10,7 +10,6 @@ public class Calculator {
     private Number onIndicator;
     private Number currentNumber;
     private Number previousNumber;
-    private Number helpNumberToEquals;
     private int countOperands;
     private String operation;
     private String helpOperation;
@@ -22,7 +21,6 @@ public class Calculator {
         memory = 0;
         helpOperation = null;
         previousNumber = 0;
-        helpNumberToEquals = 0;
         isOperandSendJustNow = false;
     }
 
@@ -101,9 +99,14 @@ public class Calculator {
     public Number memoryRead(){
         isOperandSendJustNow = true;
         previousNumber = currentNumber;
+        if(memory == null){
+            onIndicator = 0;
+            currentNumber = 0;
+            return 0;
+        }
         onIndicator = memory;
         currentNumber = memory;
-        return 0;
+        return memory;
     }
 
     public void memoryAdd(){
