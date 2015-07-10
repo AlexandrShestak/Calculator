@@ -42,8 +42,6 @@ public class Calculator {
                         performOperation(helpOperation,previousNumber,onIndicator);
                     else
                         performOperation(helpOperation, currentNumber,onIndicator);
-                    operation = act;
-                    isOperandSendJustNow = false;
                 }else{
                     // *  =
                     helpOperation = operation;
@@ -51,28 +49,23 @@ public class Calculator {
                         performOperation(operation, currentNumber,previousNumber);
                     else
                         performOperation(operation, currentNumber,currentNumber);
-                    operation = act;
-                    isOperandSendJustNow = false;
                 }
             } else  {
                 if(operation.equals("=")){
-                    operation = act;
                     currentNumber = onIndicator;
-                    isOperandSendJustNow = false;
                 }else{
                     if (isOperandSendJustNow) {
                         performOperation(operation,currentNumber,previousNumber);
                     }
-                    operation = act;
-                    isOperandSendJustNow = false;
                 }
             }
         } else{
-            operation = act;
             isOperationEnteredBefore = true;
-            isOperandSendJustNow = false;
         }
+        operation = act;
+        isOperandSendJustNow = false;
     }
+
 
     public Number getIndicator(){
         return onIndicator;
