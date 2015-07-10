@@ -10,14 +10,12 @@ public class Calculator {
     private Number onIndicator;
     private Number currentNumber;
     private Number previousNumber;
-    private int countOperands;
     private String operation;
     private String helpOperation;
     private boolean isOperandSendJustNow;
 
     public Calculator() {
         operation = new String();
-        countOperands = 0;
         memory = 0;
         helpOperation = null;
         previousNumber = 0;
@@ -26,8 +24,7 @@ public class Calculator {
 
     public void setOperand(Number number) {
         isOperandSendJustNow = true;
-        countOperands++;
-        if (countOperands >= 2){
+        if (isOperandSendJustNow){
             previousNumber = currentNumber;
         }
         if (helpOperation==null)
@@ -39,42 +36,41 @@ public class Calculator {
     public void callOperation(String act){
 
         if (isOperationEnteredBefore){
-            if (!act.equals("=")) {
-
-                if(!operation.equals("=")){
-                    if (!isOperandSendJustNow) {
-                        operation = act;
-                        countOperands = 1;
-                        isOperandSendJustNow = false;
-                        return;
-                    }
-                    performOperation(operation,currentNumber,previousNumber);
-                    operation = act;
-                    isOperandSendJustNow = false;
-                    return;
-                }else{
-                    operation = act;
-                    currentNumber = onIndicator;
-                    isOperandSendJustNow = false;
-                    return;
-                }
-
-            } else  {
-
-                if (!operation.equals("=")) {
-                    helpOperation = operation;
-                    if (!isOperandSendJustNow)
-                        countOperands = 1;
-                    performOperation(operation, currentNumber,previousNumber);
-                    operation = act;
-                    isOperandSendJustNow = false;
-                    return;
-                }else{ // =   =
+            if (act.equals("=")) {
+                if (operation.equals("=")) {
+                    //  =   =
                     if(isOperandSendJustNow)
                         performOperation(helpOperation,previousNumber,onIndicator);
                     else
                         performOperation(helpOperation, currentNumber,onIndicator);
+                    operation = act;
+                    isOperandSendJustNow = false;
+                    return;
+                }else{
+                    // *  =
+                    helpOperation = operation;
+                    if(isOperandSendJustNow)
+                        performOperation(operation, currentNumber,previousNumber);
+                    else
+                        performOperation(operation, currentNumber,currentNumber);
+                    operation = act;
+                    isOperandSendJustNow = false;
+                    return;
+                }
+            } else  {
+                if(operation.equals("=")){
+                    operation = act;
+                    currentNumber = onIndicator;
+                    isOperandSendJustNow = false;
+                    return;
 
+                }else{
+                    if (!isOperandSendJustNow) {
+                        operation = act;
+                        isOperandSendJustNow = false;
+                        return;
+                    }
+                    performOperation(operation,currentNumber,previousNumber);
                     operation = act;
                     isOperandSendJustNow = false;
                     return;
@@ -92,7 +88,7 @@ public class Calculator {
     }
 
     public void memoryStore(){
-        countOperands++;
+
         memory = getIndicator();
     }
 
@@ -125,41 +121,21 @@ public class Calculator {
     }
 
     private void performOperation(String operation, Number operand1,Number operand2){
-        if (countOperands == 1){
-            Number result = null;
-            switch(operation){
-                case "+":
-                    result =  operand1.doubleValue() + operand1.doubleValue();
-                    break;
-                case "-":
-                    result =  operand1.doubleValue() - operand1.doubleValue();
-                    break;
-                case "*":
-                    result =  operand1.doubleValue() * operand1.doubleValue();
-                    break;
-                case "/":
-                    result =  operand1.doubleValue() / operand1.doubleValue();
-                    break;
-            }
-            onIndicator = result;
-            return;
-        }else{
-            Number result = null;
-            switch(operation){
-                case "+":
-                    result =  operand2.doubleValue() + operand1.doubleValue();
-                    break;
-                case "-":
-                    result =  operand2.doubleValue() - operand1.doubleValue();
-                    break;
-                case "*":
-                    result =  operand2.doubleValue() * operand1.doubleValue();
-                    break;
-                case "/":
-                    result =  operand2.doubleValue() / operand1.doubleValue();
-                    break;
-            }
-            onIndicator = result;
+        Number result = null;
+        switch(operation){
+            case "+":
+                result =  operand2.doubleValue() + operand1.doubleValue();
+                break;
+            case "-":
+                result =  operand2.doubleValue() - operand1.doubleValue();
+                break;
+            case "*":
+                result =  operand2.doubleValue() * operand1.doubleValue();
+                break;
+            case "/":
+                result =  operand2.doubleValue() / operand1.doubleValue();
+                break;
         }
+        onIndicator = result;
     }
 }
