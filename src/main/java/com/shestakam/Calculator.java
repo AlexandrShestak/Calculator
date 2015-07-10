@@ -34,7 +34,6 @@ public class Calculator {
     }
 
     public void callOperation(String act){
-
         if (isOperationEnteredBefore){
             if (act.equals("=")) {
                 if (operation.equals("=")) {
@@ -45,7 +44,6 @@ public class Calculator {
                         performOperation(helpOperation, currentNumber,onIndicator);
                     operation = act;
                     isOperandSendJustNow = false;
-                    return;
                 }else{
                     // *  =
                     helpOperation = operation;
@@ -55,25 +53,18 @@ public class Calculator {
                         performOperation(operation, currentNumber,currentNumber);
                     operation = act;
                     isOperandSendJustNow = false;
-                    return;
                 }
             } else  {
                 if(operation.equals("=")){
                     operation = act;
                     currentNumber = onIndicator;
                     isOperandSendJustNow = false;
-                    return;
-
                 }else{
-                    if (!isOperandSendJustNow) {
-                        operation = act;
-                        isOperandSendJustNow = false;
-                        return;
+                    if (isOperandSendJustNow) {
+                        performOperation(operation,currentNumber,previousNumber);
                     }
-                    performOperation(operation,currentNumber,previousNumber);
                     operation = act;
                     isOperandSendJustNow = false;
-                    return;
                 }
             }
         } else{
