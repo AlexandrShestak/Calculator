@@ -16,7 +16,7 @@ public class Calculator {
 
     public Calculator() {
         operation = new String();
-        memory = 0;
+        memory = null;
         helpOperation = null;
         previousNumber = 0;
         isOperandSendJustNow = false;
@@ -72,7 +72,7 @@ public class Calculator {
     }
 
     public void memoryStore(){
-
+        memory = 0;
         memory = getIndicator();
     }
 
@@ -90,7 +90,10 @@ public class Calculator {
     }
 
     public void memoryAdd(){
-        memory = memory.doubleValue() + getIndicator().doubleValue();
+        if(memoryIsEmpty())
+            memory = getIndicator().doubleValue();
+        else
+            memory = memory.doubleValue() + getIndicator().doubleValue();
     }
 
     public void memoryClear(){
